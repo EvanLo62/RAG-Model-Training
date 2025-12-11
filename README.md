@@ -187,9 +187,9 @@ python train_retriever.py \
 - **Loss Function**: Multiple Negatives Ranking Loss (MNRL)
   - **公式**:
 
-    $$
-    \mathcal{L} = - \log \frac{\exp(\text{sim}(q_i, p_i^+) / \tau)}{\sum_j \exp(\text{sim}(q_i, p_j) / \tau)}
-    $$
+  $$
+  \mathcal{L} = - \log \frac{\exp(\text{sim}(q_i, p_i^+) / \tau)}{\sum_j \exp(\text{sim}(q_i, p_j) / \tau)}
+  $$
 
     其中 $sim(q, p)$ 為 query 與 passage 的餘弦相似度，$\tau$ 為溫度參數。
 
@@ -275,9 +275,9 @@ python train_reranker.py \
 - **Loss Function**: Binary Cross-Entropy Loss (BCE)
   - **公式**:
 
-    $$
-    \mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)]
-    $$
+  $$
+  \mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)]
+  $$
 
     其中 $y_i$ 為真實標籤 (1 為相關，0 為不相關)，$\hat{y}_i$ 為模型預測的相關機率。
 
