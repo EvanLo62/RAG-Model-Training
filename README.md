@@ -186,8 +186,12 @@ python train_retriever.py \
 
 - **Loss Function**: Multiple Negatives Ranking Loss (MNRL)
   - **公式**:
-    $$ \mathcal{L} = - \log \frac{\exp(\text{sim}(q_i, p_i^+) / \tau)}{\sum_j \exp(\text{sim}(q_i, p_j) / \tau)} $$
+    $$ 
+    \mathcal{L} = - \log \frac{\exp(\text{sim}(q_i, p_i^+) / \tau)}{\sum_j \exp(\text{sim}(q_i, p_j) / \tau)}
+    $$
+
     其中 $sim(q, p)$ 為 query 與 passage 的餘弦相似度，$\tau$ 為溫度參數。
+
   - **說明**: 對於每一個 query $q_i$，只有其對應的正樣本 $p_i^+$ 被視為正例，而同一個 batch 中的其他所有 passages $p_j (j \neq i)$ 都被視為負樣本 (In-batch negatives)。這使得模型能在大 batch size 下高效學習區分相關與不相關文檔。
 
 - **訓練曲線**:
@@ -269,8 +273,12 @@ python train_reranker.py \
 
 - **Loss Function**: Binary Cross-Entropy Loss (BCE)
   - **公式**:
-    $$ \mathcal{L}_{BCE} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)] $$
+    $$
+    \mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)]
+    $$
+
     其中 $y_i$ 為真實標籤 (1 為相關，0 為不相關)，$\hat{y}_i$ 為模型預測的相關機率。
+
   - **說明**: 將重排序任務視為二元分類問題。模型接收 (query, passage) 對，輸出該 passage 是否相關的機率 (0~1)。透過最小化預測機率與真實標籤之間的差異來優化模型。
 
 - **訓練曲線**:
