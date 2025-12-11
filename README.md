@@ -186,8 +186,8 @@ python train_retriever.py \
 
 - **Loss Function**: Multiple Negatives Ranking Loss (MNRL)
   - **公式**:
-  
-    $$ 
+
+    $$
     \mathcal{L} = - \log \frac{\exp(\text{sim}(q_i, p_i^+) / \tau)}{\sum_j \exp(\text{sim}(q_i, p_j) / \tau)}
     $$
 
