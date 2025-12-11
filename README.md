@@ -186,6 +186,7 @@ python train_retriever.py \
 
 - **Loss Function**: Multiple Negatives Ranking Loss (MNRL)
   - **公式**:
+  
     $$ 
     \mathcal{L} = - \log \frac{\exp(\text{sim}(q_i, p_i^+) / \tau)}{\sum_j \exp(\text{sim}(q_i, p_j) / \tau)}
     $$
@@ -273,6 +274,7 @@ python train_reranker.py \
 
 - **Loss Function**: Binary Cross-Entropy Loss (BCE)
   - **公式**:
+
     $$
     \mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)]
     $$
